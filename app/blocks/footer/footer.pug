@@ -1,5 +1,6 @@
 mixin footer()
-    .container.footer_container
-        +contact()
-        +social-media()
-        button.button.button_theme_go.col-start-6.col-span-2
+    footer.footer
+        .container.footer__container
+            +logo("logo_white.png")
+            +menu()(class="menu__list_inverse")
+            +contact()(class="contact__link_inverse")
