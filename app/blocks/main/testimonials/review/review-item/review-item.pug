@@ -1,0 +1,8 @@
+mixin review-item(src, name, text)
+    .review-item
+        .review-item__author
+            .review-item__wrap
+                .review-item__img(src="images/review/"+src alt="")
+            p.review-item__name #{name}
+        blockquote.review-item__text
+            | #{text}

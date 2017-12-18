@@ -1,2 +1,9 @@
 mixin testimonials()
-    | Testimonials
+    section.testimonials
+        .container.testimonials__container
+            h2.head-2.about__head-2.row-start-1.col-span-6 What people says
+            button.button.testimonials__button.button_theme_arrow.row-start-3 left
+            button.button.testimonials__button.button_theme_arrow.row-start-3 right
+            article.review
+                +review-item('photo_1.jpg','Alex','Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in')
+                +review-item('photo_2.jpg','Michael','Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercita tion ullamco laboris nisi ut aliquip ex ea commodo consequat. ')

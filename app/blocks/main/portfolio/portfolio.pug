@@ -1,2 +1,14 @@
 mixin portfolio()
-    | Portfolio
+    section.portfolio
+        .container.portfolio__container
+            h2.head-2.about__head-2.row-start-1.col-span-6 Our portfolio
+            p.text.row-start-2-col-span-6  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sed elit tortor. Quisque bibendum mauris velit easely documented
+            article.gallery
+                +gallery-item('image_1.jpg','Title about work')(class='row-start-2 col-span-6')
+                +gallery-item('image_2.jpg','About work')(class='row-start-2 col-span-6')
+                +gallery-item('image_3.jpg','About work')(class='row-start-2 col-span-6')
+                +gallery-item('image_4.jpg','About work')(class='row-start-2 col-span-6')
+                +gallery-item('image_5.jpg','About work')(class='row-start-2 col-span-6')
+                +gallery-item('image_6.jpg','About work')(class='row-start-2 col-span-6')
+            p.text.row-start-2-col-span-6  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sed elit tortor. Quisque bibendum mauris velit easely documented
+            button.button.portfolio__button.button_theme_outline.row-start-3 all works

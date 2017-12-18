@@ -1,0 +1,4 @@
+mixin gallery-item(src, name)
+	.gallery-item
+		.gallery-item__img(class!=attributes.class src="images/gallery/"+src alt="")
+			span.gallery-item__name #{name}
