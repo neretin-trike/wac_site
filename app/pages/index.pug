@@ -1,4 +1,5 @@
-include ../blocks/header/header.pug
+include blocks.pug
++includes()
 
 doctype html
 html
@@ -11,5 +12,5 @@ html
     body
         +header()
         main
-        footer
+        +footer()
     
