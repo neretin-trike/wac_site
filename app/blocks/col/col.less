@@ -1,0 +1,20 @@
+@column-count: 12;  // Количество классов
+
+.generate-column-span(@i: 1) when (@i =< @column-count) {
+  .col-span-@{i} {
+    grid-column-end: span @i;
+  }
+  .generate-column-span(@i + 1);
+}
+
+.generate-column-start(@i: 1) when (@i =< @column-count) {
+  .col-start-@{i} {
+    grid-column-start: @i;
+  }
+  .generate-column-start(@i + 1);
+}
+
+.generate-column-span();
+.generate-column-start();
+
+

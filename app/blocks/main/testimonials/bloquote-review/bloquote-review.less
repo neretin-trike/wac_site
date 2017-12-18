@@ -1,0 +1,29 @@
+.bloquote-review{
+    position: relative;
+
+    &:before{
+        content: "“";
+        
+        display: inline-block;
+        position: absolute;
+        left: -4.5rem;
+        top: -1.5rem;
+        
+        font-size: 8rem;
+        font-weight: @font-weight-bold;
+        font-family: @quotes-font;
+
+        color: @color-lightgray;
+    }
+
+    &__author{
+        display: block;
+        padding-top: 3.5rem;
+
+        font-size: 1.8rem;
+        font-weight: @font-weight-semibold;
+        font-style: normal;
+
+        color: @color-darkgray;
+    }
+}

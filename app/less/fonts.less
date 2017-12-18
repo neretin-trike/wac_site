@@ -1,0 +1,23 @@
+.font(@fontName; @urlName: @fontName; @weight: normal; @style: normal) {
+    font-family: '@{fontName}';
+    src: url("../fonts/@{fontName}/@{urlName}.woff2") format("woff2"),
+         url("../fonts/@{fontName}/@{urlName}.woff") format("woff"),
+         url('../fonts/@{fontName}/@{urlName}.ttf') format('truetype');
+    font-weight: @weight;
+    font-style: @style;
+}
+
+@font-face { .font('raleway'; 'ralewaythin'; 100); }
+@font-face { .font('raleway'; 'ralewayextralight'; 200); }
+@font-face { .font('raleway'; 'ralewaylight'; 300); }
+@font-face { .font('raleway'; 'ralewayregular'; 400); }
+@font-face { .font('raleway'; 'ralewaymedium'; 500); }
+@font-face { .font('raleway'; 'ralewaysemibold'; 600); }
+@font-face { .font('raleway'; 'ralewaybold'; 700); }
+@font-face { .font('raleway'; 'ralewayextrabold'; 800); }
+@font-face { .font('raleway'; 'ralewayblack'; 900); }
+
+@font-face { .font('montserrat'; 'montserratLight'; 300); }
+@font-face { .font('montserrat'; 'montserratRegular'; 400); }
+@font-face { .font('montserrat'; 'montserratSemiBold'; 600); }
+

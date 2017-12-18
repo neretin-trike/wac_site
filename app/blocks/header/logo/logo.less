@@ -1,0 +1,21 @@
+.logo{
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    align-items: center;
+
+    position: relative;
+    z-index: 999;
+
+    color: @color-light;
+    
+    &__name{
+        padding-left: 3rem;
+
+        font-size: 3.4rem;
+        font-weight: @font-weight-light;
+
+        &_first-word{
+            font-weight: @font-weight-semibold;
+        }
+    }
+}
