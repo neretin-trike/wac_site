@@ -390,75 +390,57 @@ template {
   display: none;
 }
 @font-face {
-  font-family: 'raleway';
-  src: url("../fonts/raleway/ralewaythin.woff2") format("woff2"), url("../fonts/raleway/ralewaythin.woff") format("woff"), url('../fonts/raleway/ralewaythin.ttf') format('truetype');
+  font-family: 'proximanova';
+  src: url("../fonts/proximanova/proximanova-thin.woff2") format("woff2"), url("../fonts/proximanova/proximanova-thin.woff") format("woff"), url('../fonts/proximanova/proximanova-thin.ttf') format('truetype');
   font-weight: 100;
   font-style: normal;
 }
 @font-face {
-  font-family: 'raleway';
-  src: url("../fonts/raleway/ralewayextralight.woff2") format("woff2"), url("../fonts/raleway/ralewayextralight.woff") format("woff"), url('../fonts/raleway/ralewayextralight.ttf') format('truetype');
+  font-family: 'proximanova';
+  src: url("../fonts/proximanova/proximanova-extralight.woff2") format("woff2"), url("../fonts/proximanova/proximanova-extralight.woff") format("woff"), url('../fonts/proximanova/proximanova-extralight.ttf') format('truetype');
   font-weight: 200;
   font-style: normal;
 }
 @font-face {
-  font-family: 'raleway';
-  src: url("../fonts/raleway/ralewaylight.woff2") format("woff2"), url("../fonts/raleway/ralewaylight.woff") format("woff"), url('../fonts/raleway/ralewaylight.ttf') format('truetype');
+  font-family: 'proximanova';
+  src: url("../fonts/proximanova/proximanova-light.woff2") format("woff2"), url("../fonts/proximanova/proximanova-light.woff") format("woff"), url('../fonts/proximanova/proximanova-light.ttf') format('truetype');
   font-weight: 300;
   font-style: normal;
 }
 @font-face {
-  font-family: 'raleway';
-  src: url("../fonts/raleway/ralewayregular.woff2") format("woff2"), url("../fonts/raleway/ralewayregular.woff") format("woff"), url('../fonts/raleway/ralewayregular.ttf') format('truetype');
+  font-family: 'proximanova';
+  src: url("../fonts/proximanova/proximanova-regular.woff2") format("woff2"), url("../fonts/proximanova/proximanova-regular.woff") format("woff"), url('../fonts/proximanova/proximanova-regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
-  font-family: 'raleway';
-  src: url("../fonts/raleway/ralewaymedium.woff2") format("woff2"), url("../fonts/raleway/ralewaymedium.woff") format("woff"), url('../fonts/raleway/ralewaymedium.ttf') format('truetype');
+  font-family: 'proximanova';
+  src: url("../fonts/proximanova/proximanova-medium.woff2") format("woff2"), url("../fonts/proximanova/proximanova-medium.woff") format("woff"), url('../fonts/proximanova/proximanova-medium.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
 }
 @font-face {
-  font-family: 'raleway';
-  src: url("../fonts/raleway/ralewaysemibold.woff2") format("woff2"), url("../fonts/raleway/ralewaysemibold.woff") format("woff"), url('../fonts/raleway/ralewaysemibold.ttf') format('truetype');
+  font-family: 'proximanova';
+  src: url("../fonts/proximanova/proximanova-semibold.woff2") format("woff2"), url("../fonts/proximanova/proximanova-semibold.woff") format("woff"), url('../fonts/proximanova/proximanova-semibold.ttf') format('truetype');
   font-weight: 600;
   font-style: normal;
 }
 @font-face {
-  font-family: 'raleway';
-  src: url("../fonts/raleway/ralewaybold.woff2") format("woff2"), url("../fonts/raleway/ralewaybold.woff") format("woff"), url('../fonts/raleway/ralewaybold.ttf') format('truetype');
+  font-family: 'proximanova';
+  src: url("../fonts/proximanova/proximanova-bold.woff2") format("woff2"), url("../fonts/proximanova/proximanova-bold.woff") format("woff"), url('../fonts/proximanova/proximanova-bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
 }
 @font-face {
-  font-family: 'raleway';
-  src: url("../fonts/raleway/ralewayextrabold.woff2") format("woff2"), url("../fonts/raleway/ralewayextrabold.woff") format("woff"), url('../fonts/raleway/ralewayextrabold.ttf') format('truetype');
+  font-family: 'proximanova';
+  src: url("../fonts/proximanova/proximanova-extrabold.woff2") format("woff2"), url("../fonts/proximanova/proximanova-extrabold.woff") format("woff"), url('../fonts/proximanova/proximanova-extrabold.ttf') format('truetype');
   font-weight: 800;
   font-style: normal;
 }
 @font-face {
-  font-family: 'raleway';
-  src: url("../fonts/raleway/ralewayblack.woff2") format("woff2"), url("../fonts/raleway/ralewayblack.woff") format("woff"), url('../fonts/raleway/ralewayblack.ttf') format('truetype');
+  font-family: 'proximanova';
+  src: url("../fonts/proximanova/proximanova-black.woff2") format("woff2"), url("../fonts/proximanova/proximanova-black.woff") format("woff"), url('../fonts/proximanova/proximanova-black.ttf') format('truetype');
   font-weight: 900;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'montserrat';
-  src: url("../fonts/montserrat/montserratLight.woff2") format("woff2"), url("../fonts/montserrat/montserratLight.woff") format("woff"), url('../fonts/montserrat/montserratLight.ttf') format('truetype');
-  font-weight: 300;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'montserrat';
-  src: url("../fonts/montserrat/montserratRegular.woff2") format("woff2"), url("../fonts/montserrat/montserratRegular.woff") format("woff"), url('../fonts/montserrat/montserratRegular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'montserrat';
-  src: url("../fonts/montserrat/montserratSemiBold.woff2") format("woff2"), url("../fonts/montserrat/montserratSemiBold.woff") format("woff"), url('../fonts/montserrat/montserratSemiBold.ttf') format('truetype');
-  font-weight: 600;
   font-style: normal;
 }
 html {
@@ -692,13 +674,6 @@ body {
 .img-wrap__image {
   max-height: 100%;
 }
-.header {
-  font-family: 'montserrat';
-}
-.header__container {
-  align-items: center;
-  padding: 10rem 0;
-}
 .logo {
   display: grid;
   grid-template-columns: repeat(2, max-content);
@@ -734,172 +709,6 @@ body {
 .menu__link_active {
   border-bottom: 0.2rem solid #ffffff;
 }
-.main {
-  margin-top: -27rem;
-}
-.home {
-  padding-top: 32.5rem;
-  position: relative;
-  height: 100%;
-}
-.home__container {
-  grid-template-rows: repeat(2, auto);
-}
-.home__slogan {
-  margin-top: 0;
-  margin-bottom: 20rem;
-}
-.features-item {
-  background-color: #ffffff;
-  text-align: center;
-  padding-top: 7rem;
-  padding-bottom: 3.5rem;
-  padding-left: 2.7rem;
-  padding-right: 2.7rem;
-}
-.features-item:hover {
-  box-shadow: 0 0 2rem 0.5rem rgba(0, 0, 0, 0.1);
-}
-.features-item__present {
-  margin: 0;
-}
-.features-item__wrap {
-  height: 10rem;
-}
-.features-item__caption {
-  font-size: 3rem;
-  line-height: 3.4rem;
-  color: #666666;
-  padding: 0 1.6rem;
-}
-.slogan {
-  padding-right: 5rem;
-  font-size: 4.8rem;
-  font-weight: 300;
-  text-transform: uppercase;
-  line-height: 7.5rem;
-  color: #ffffff;
-}
-.slogan_emphasis {
-  font-weight: 800;
-}
-.about__container {
-  padding-top: 15rem;
-  grid-template-rows: repeat(3, auto);
-}
-.about__head-2 {
-  margin-bottom: 4rem;
-}
-.about__button {
-  margin-top: 5rem;
-  margin-bottom: 5.5rem;
-}
-.projects__container {
-  padding-top: 15rem;
-}
-.projects__head-2 {
-  margin-bottom: 7.5rem;
-}
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(4, 25%);
-  overflow: hidden;
-}
-.gallery__item {
-  height: 43.5rem;
-}
-.gallery__img {
-  max-height: 100%;
-}
-.solutions__container {
-  padding-top: 16rem;
-  padding-bottom: 18rem;
-}
-.solutions__head-2 {
-  margin-bottom: 5.5rem;
-}
-.solutions-item__header {
-  margin: 0;
-  font-size: 3rem;
-  font-weight: 500;
-  color: #333333;
-}
-.solutions-item__container {
-  margin-bottom: 7rem;
-}
-.testimonials {
-  background-color: #ffffff;
-}
-.testimonials__head-2 {
-  margin-top: 8rem;
-  margin-bottom: 5.5rem;
-}
-.testimonials__container {
-  grid-template-rows: repeat(3, auto);
-}
-.testimonials__button {
-  margin-top: 7rem;
-  margin-bottom: 9rem;
-}
-.bloquote-review {
-  position: relative;
-}
-.bloquote-review:before {
-  content: "“";
-  display: inline-block;
-  position: absolute;
-  left: -4.5rem;
-  top: -1.5rem;
-  font-size: 8rem;
-  font-weight: 700;
-  font-family: 'Times New Roman';
-  color: #cccccc;
-}
-.bloquote-review__author {
-  display: block;
-  padding-top: 3.5rem;
-  font-size: 1.8rem;
-  font-weight: 600;
-  font-style: normal;
-  color: #333333;
-}
-.news {
-  padding-top: 17rem;
-  padding-bottom: 17rem;
-}
-.news__head-2 {
-  margin-bottom: 5rem;
-}
-.news__container {
-  grid-template-rows: repeat(3, auto);
-}
-.news__button {
-  margin-top: 6rem;
-}
-.news-item__info {
-  display: grid;
-  grid-auto-flow: column;
-  padding-bottom: 4.5rem;
-}
-.news-item__date {
-  color: #cccccc;
-  font-weight: 500;
-}
-.news-item__day {
-  font-size: 6rem;
-  margin: 0;
-}
-.news-item__month {
-  font-size: 3rem;
-  margin: 0;
-}
-.news-item__caption {
-  font-size: 2.4rem;
-  line-height: 3.6rem;
-  color: #333333;
-  margin: 0;
-  padding-left: 3.5rem;
-}
 .footer {
   background-image: linear-gradient(45deg, #a72b8f 0%, #0169b4 100%);
   padding-top: 11.5rem;
@@ -913,63 +722,4 @@ body {
 }
 .footer__social-media {
   margin-bottom: -2.5rem;
-}
-.contact {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  text-align: center;
-}
-.contact__icon {
-  display: inline-block;
-  width: 7rem;
-  height: 7rem;
-  border: 0.2rem solid #ffffff;
-  border-radius: 3.5rem;
-  background-image: url(../images/footer_icon.PNG);
-  background-repeat: no-repeat;
-}
-.contact__icon_location {
-  background-position: 2.6rem center;
-}
-.contact__icon_mail {
-  background-position: -27.4rem center;
-}
-.contact__icon_phone {
-  background-position: -57.5rem center;
-}
-.contact__icon_fax {
-  background-position: -87.4rem center;
-}
-.contact__info {
-  font-family: 'montserrat';
-  font-weight: 300;
-  color: #ffffff;
-}
-.social-media {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  text-align: center;
-}
-.social-media__icon {
-  display: inline-block;
-  width: 6rem;
-  height: 5rem;
-  background-image: url(../images/social_media.PNG);
-  background-repeat: no-repeat;
-}
-.social-media__icon_facebook {
-  background-position: 1.6rem center;
-}
-.social-media__icon_twitter {
-  background-position: -7.6rem center;
-}
-.social-media__icon_pinterest {
-  background-position: -17.8rem center;
-}
-.social-media__icon_google {
-  background-position: -28.6rem center;
-}
-.social-media__link {
-  display: block;
-  height: 100%;
 }

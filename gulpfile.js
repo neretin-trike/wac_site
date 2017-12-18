@@ -20,7 +20,7 @@ gulp.task('browser-sync', function() { // Создаем таск browser-sync
 });
 
 gulp.task('pug', function(){
-    return gulp.src('app/pages/*.pug')
+    return gulp.src(['app/pages/*.pug','!app/pages/blocks.pug'])
         .pipe( pug({pretty:'    '}))
         .pipe(gulp.dest('app')) // Выгружаем результата в папку app/css
 });
