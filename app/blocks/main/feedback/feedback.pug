@@ -1,13 +1,13 @@
 mixin feedback()
     section.feedback
         .container.feedback__container
-            form.feedback-form
+            form.feedback-form.col-span-4
                 legend.feedback-form__legend Say hello!
                 input.input.feedback-form__input(type="text" placeholder="Name")    
                 input.input.feedback-form__input(type="text" placeholder="Email")            
                 input.input.feedback-form__input(type="text" placeholder="Message")    
-                button.button.feedback__button.button_theme_arrow.row-start-3 Send message
-            .contact-us
+                button.button.feedback__button.button_theme_arrow Send message
+            .contact-us.col-start-8.col-span-5
                 ul.contact-us__list
                     li.contact-us__item.contact-us__item_phone + ( 373 ) 60 817818
                     li.contact-us__item.contact-us__item_mail belicov.dmitrii@gmail.com

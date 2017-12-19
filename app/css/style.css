@@ -450,13 +450,14 @@ body {
   height: 100vh;
   font-family: 'raleway';
   font-size: 1.4rem;
-  background-color: #f5f5f5;
+  background-color: #ffffff;
 }
 * {
   box-sizing: border-box;
+  border: 0.1rem solid #afb4ff;
 }
 .container {
-  max-width: 117rem;
+  max-width: 123rem;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -657,7 +658,7 @@ body {
   background-position: center 17%;
 }
 .link {
-  color: #ffffff;
+  color: #2a2d2e;
   text-decoration: none;
 }
 .head-2 {
@@ -674,12 +675,15 @@ body {
 .img-wrap__image {
   max-height: 100%;
 }
-.logo {
-  display: grid;
-  grid-template-columns: repeat(2, max-content);
+.header {
+  font-family: 'montserrat';
+}
+.header__container {
   align-items: center;
+  padding: 2.3rem 0;
+}
+.logo {
   position: relative;
-  z-index: 999;
   color: #ffffff;
 }
 .logo__name {
@@ -709,17 +713,123 @@ body {
 .menu__link_active {
   border-bottom: 0.2rem solid #ffffff;
 }
-.footer {
-  background-image: linear-gradient(45deg, #a72b8f 0%, #0169b4 100%);
-  padding-top: 11.5rem;
-  overflow: hidden;
+.contact__list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: space-between;
 }
-.footer__container {
+.main {
+  margin-top: -27rem;
+}
+.home {
+  padding-top: 32.5rem;
+  position: relative;
+  height: 100%;
+}
+.home__container {
+  grid-template-rows: repeat(2, auto);
+}
+.home__slogan {
+  margin-top: 0;
+  margin-bottom: 20rem;
+}
+.about__container {
+  padding-top: 15rem;
   grid-template-rows: repeat(3, auto);
 }
-.footer__contact {
-  margin-bottom: 12.4rem;
+.about__head-2 {
+  margin-bottom: 4rem;
 }
-.footer__social-media {
-  margin-bottom: -2.5rem;
+.about__button {
+  margin-top: 5rem;
+  margin-bottom: 5.5rem;
+}
+.services__container {
+  padding-top: 15rem;
+}
+.services__head-2 {
+  margin-bottom: 7.5rem;
+}
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-row-gap: 4rem;
+  grid-column-gap: 7rem;
+}
+.portfolio {
+  padding-top: 17rem;
+  padding-bottom: 17rem;
+}
+.portfolio__head-2 {
+  margin-bottom: 5rem;
+}
+.portfolio__container {
+  grid-template-rows: repeat(3, auto);
+}
+.portfolio__button {
+  margin-top: 6rem;
+}
+.gallery {
+  display: grid;
+  grid-template-rows: repeat(3, 30rem);
+  grid-template-columns: repeat(3, 39rem);
+  grid-gap: 3rem;
+}
+.gallery-item {
+  max-width: 100%;
+  overflow: hidden;
+  height: auto;
+  position: relative;
+}
+.gallery-item__image {
+  height: 100%;
+  position: absolute;
+}
+.gallery-item__name {
+  position: absolute;
+}
+.testimonials {
+  background-color: #ffffff;
+}
+.testimonials__head-2 {
+  margin-top: 8rem;
+  margin-bottom: 5.5rem;
+}
+.testimonials__container {
+  grid-template-rows: repeat(3, auto);
+}
+.testimonials__button {
+  margin-top: 7rem;
+  margin-bottom: 9rem;
+}
+.review {
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 3rem;
+}
+.review-item {
+  display: grid;
+  grid-auto-flow: column;
+}
+.feedback__container {
+  padding-top: 16rem;
+  padding-bottom: 18rem;
+}
+.feedback__head-2 {
+  margin-bottom: 5.5rem;
+}
+.feedback-form__input {
+  width: 100%;
+  display: block;
+}
+.footer {
+  background-image: linear-gradient(45deg, #a72b8f 0%, #0169b4 100%);
+  font-family: 'montserrat';
+}
+.footer__container {
+  align-items: center;
+  padding: 2.3rem 0;
 }
