@@ -1,8 +1,8 @@
 {
-  "name": "archi",
+  "name": "wac",
   "version": "1.0.0",
   "description": "Мой проект на Gulp",
-  "main": "index.js",
+  "main": "blocks.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,6 +10,7 @@
   "license": "ISC",
   "devDependencies": {
     "browser-sync": "^2.18.13",
+    "colors": "^1.1.2",
     "gulp": "^3.9.1",
     "gulp-less": "^3.3.2",
     "gulp-pug": "^3.3.0",
