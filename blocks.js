@@ -100,6 +100,7 @@ function printErrorMessage(errText) {
 	rl.close();
 }
 
+
 // //////////////////////////////////////////////////////////////////////////
 
 function initMakeBlock(blockName) {
@@ -131,15 +132,16 @@ function initMakeBlock(blockName) {
 
 // Command line arguments
 const blockNameFromCli = process.argv
-		.slice(2)
 		// join all arguments to one string (to simplify the capture user input errors)
-		.join(' ');
-
+		.slice(2)
+		.join(' ')
+		.split('+');
 
 // If the user pass the name of the block in the command-line options
 // that create a block. Otherwise - activates interactive mode
 if (blockNameFromCli !== '') {
-	initMakeBlock(blockNameFromCli).catch(printErrorMessage);
+	createAnotherFiles()
+	// initMakeBlock(blockNameFromCli).catch(printErrorMessage);
 } 
 else {
 	rl.setPrompt('Block name: '.magenta);
@@ -149,3 +151,11 @@ else {
 		initMakeBlock(blockName).catch(printErrorMessage);
 	});
 }
+
+function createAnotherFiles(){
+	blockNameFromCli.forEach(function(item, i, arr) {
+		initMakeBlock(item.trim()).catch(printErrorMessage);
+	});
+}
+
+//block>(block2>block21)+block3
