@@ -672,10 +672,6 @@ body {
 .img-wrap__image {
   max-height: 100%;
 }
-.header__container {
-  align-items: center;
-  padding: 2.4rem 0;
-}
 .logo {
   position: relative;
   color: #ffffff;
@@ -741,17 +737,38 @@ body {
 .contact__link_linkedin {
   background-position: -9.4rem center;
 }
+.header__container {
+  align-items: center;
+  padding: 2.4rem 0;
+}
+.footer {
+  background-image: linear-gradient(45deg, #a72b8f 0%, #0169b4 100%);
+}
+.footer__container {
+  align-items: center;
+  padding: 2.3rem 0;
+}
 .home {
-  padding-top: 32.5rem;
+  padding: 41rem 0;
   position: relative;
   height: 100%;
+  background-image: url(../images/home_background.png);
+  background-size: cover;
 }
 .home__container {
   grid-template-rows: repeat(2, auto);
 }
 .home__slogan {
-  margin-top: 0;
-  margin-bottom: 20rem;
+  margin: 0;
+}
+.slogan {
+  font-size: 7.2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  text-align: center;
+  background: -webkit-linear-gradient(left, #cf38ef, #f82e6f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .about__container {
   padding-top: 15rem;
@@ -841,11 +858,4 @@ body {
 .feedback-form__input {
   width: 100%;
   display: block;
-}
-.footer {
-  background-image: linear-gradient(45deg, #a72b8f 0%, #0169b4 100%);
-}
-.footer__container {
-  align-items: center;
-  padding: 2.3rem 0;
 }
