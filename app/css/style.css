@@ -646,7 +646,6 @@ body {
   border: none;
   outline: none;
   cursor: pointer;
-  background-color: transparent;
   min-width: 25rem;
   max-height: 6rem;
   position: relative;
@@ -668,17 +667,33 @@ body {
   background-position: 15% center;
   background-image: url(../images/circles.PNG), linear-gradient(to right, #cf38ef, #d828b8);
 }
-.button_theme_go {
-  width: 14.4rem;
-  height: 14.4rem;
+.button_theme_arrow-l {
+  border-radius: 0;
+  min-width: 0;
+  padding: 0;
+  margin-left: auto;
+  width: 3rem;
+  height: 3rem;
   position: relative;
-  top: 9.3rem;
-  background-color: #ffffff;
-  border-top-left-radius: 7.2rem;
-  border-top-right-radius: 7.2rem;
-  background-image: url(../images/arrow_top.png);
+  background-color: transparent;
+  background-image: url(../images/arrow_right.PNG);
+  transform: scale(-1);
   background-repeat: no-repeat;
-  background-position: center 17%;
+  background-position: center;
+  border: 0.1rem solid #cacaca;
+}
+.button_theme_arrow-r {
+  border-radius: 0;
+  min-width: 0;
+  padding: 0;
+  width: 3rem;
+  height: 3rem;
+  position: relative;
+  background-color: transparent;
+  background-image: url(../images/arrow_right.PNG);
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 0.1rem solid #cacaca;
 }
 .link {
   color: #2a2d2e;
@@ -911,16 +926,8 @@ body {
 .testimonials {
   background-color: #ffffff;
 }
-.testimonials__head-2 {
-  margin-top: 8rem;
-  margin-bottom: 5.5rem;
-}
 .testimonials__container {
   grid-template-rows: repeat(3, auto);
-}
-.testimonials__button {
-  margin-top: 7rem;
-  margin-bottom: 9rem;
 }
 .review {
   display: grid;

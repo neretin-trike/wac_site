@@ -146,8 +146,57 @@ const blockNameFromCli = process.argv
 console.log('-------------');
 
 var urls = [];
+// var hyphen = '';
 		
-function recurse(name, url = ''){
+function recurse(name, url = '',hyphen = ''){
+	var bro = [];
+
+	var posAncestor = name.indexOf('>');
+	var posDescendant = name.indexOf('+');
+
+	if ( ((posAncestor!= -1) && (posAncestor < posDescendant))  || (posDescendant ==-1)){
+
+		var roots = name.slice(0,posAncestor);
+		var remain = name.slice(posAncestor+1, name.length);
+
+		if (posAncestor != -1){
+
+			hyphen += '— ';
+			
+			console.log(hyphen+roots);
+			url = url + '/' + roots;
+			urls.push(url);
+			console.log('============');
+			recurse(remain,url,hyphen);
+		}
+		else{
+			hyphen += '— ';
+			
+			console.log(hyphen+remain);
+			
+			url = url + '/' + remain;
+			urls.push(url);
+			console.log('============');
+		}
+	}
+	else{
+		if (name.indexOf('+') != -1){
+			bro = name.split('+');
+
+			bro.forEach(element => {
+				// hyphen += '-';
+				// console.log(hyphen+element);
+				// urls.push(url+'/'+element);
+				// console.log('============');
+				recurse(element,url,hyphen);
+			});
+		}
+
+	}
+
+}
+
+function recurse2(name, url = ''){
 
 	var bro = [];
 	var pos = name.indexOf('>');
@@ -177,6 +226,7 @@ function recurse(name, url = ''){
 		}
 	}
 }
+
 
 recurse(blockNameFromCli);
 console.log(urls);
