@@ -7,6 +7,14 @@
         display: grid;
         grid-auto-flow: column;
         justify-content: space-between;
+
+        &_inverse{
+            color: @color-light;
+
+            .contact__link{
+                background-image:url(../images/social_media_white.png);
+            }
+        }
     }
 
     &__item{
@@ -16,7 +24,6 @@
     &__phone{
         font-weight: @font-weight-semibold;
         font-size: 1.8rem;
-        color: @color-bluegray;
 
         margin-right: 4rem;
         margin-left: 3.5rem;
@@ -28,6 +35,8 @@
         background-repeat: no-repeat;
         width: 2.5rem;
         height: 2rem;
+
+
 
         &_twitter{
             background-position: 0.3rem center;
