@@ -138,15 +138,13 @@ const blockNameFromCli = process.argv
 		.slice(2)
 		.join(' ');
 
-
 //block>(block2>block21+block22)+block3
-
 // b>b2>b21+b22+b23
+// b>b1+b2>b21>b211+b212+b213
 
 console.log('-------------');
 
 var urls = [];
-// var hyphen = '';
 		
 function recurse(name, url = '',hyphen = ''){
 	var bro = [];
@@ -160,75 +158,51 @@ function recurse(name, url = '',hyphen = ''){
 		var remain = name.slice(posAncestor+1, name.length);
 
 		if (posAncestor != -1){
-
 			hyphen += '— ';
 			
 			console.log(hyphen+roots);
+
 			url = url + '/' + roots;
 			urls.push(url);
-			console.log('============');
+			console.log('··············');
 			recurse(remain,url,hyphen);
 		}
-		else{
+		if (posAncestor == -1){
 			hyphen += '— ';
 			
-			console.log(hyphen+remain);
+			console.log(hyphen +remain);
 			
 			url = url + '/' + remain;
 			urls.push(url);
-			console.log('============');
+			console.log('··············');
+
 		}
 	}
 	else{
 		if (name.indexOf('+') != -1){
-			bro = name.split('+');
 
-			bro.forEach(element => {
-				// hyphen += '-';
-				// console.log(hyphen+element);
-				// urls.push(url+'/'+element);
-				// console.log('============');
-				recurse(element,url,hyphen);
-			});
-		}
-
-	}
-
-}
-
-function recurse2(name, url = ''){
-
-	var bro = [];
-	var pos = name.indexOf('>');
+			if (posAncestor == -1){
+				bro = name.split('+');
+				
+				bro.forEach(element => {
+					recurse(element,url,hyphen);
+				});
+			}
+			else{
+				var roots = name.slice(0,posDescendant);
+				var remain = name.slice(posDescendant+1, name.length);
 	
-	var roots = name.slice(0,pos);
-	var remain = name.slice(pos+1, name.length);
+				recurse(remain,url,hyphen);
+			}
 
-	if (pos != -1){
-		console.log('root:'+roots);
-		console.log('remain:'+remain);
-
-		url = url + '/' + roots;
-		urls.push(url);
-		
-		console.log('============');
-
-		recurse(remain,url);
-	}
-	else{
-		if (remain.indexOf('+') != -1){
-			bro = remain.split('+');
-
-			bro.forEach(element => {
-				console.log('bro:'+element);
-				urls.push(url+'/'+element);
-			});
 		}
 	}
 }
 
+// recurse('b>b1+b2>b21>b211>b2222>b33>b85+b213+b787');
+recurse('b1>b3+b5>b2+b21');
 
-recurse(blockNameFromCli);
+// recurse(blockNameFromCli);
 console.log(urls);
 
 // If the user pass the name of the block in the command-line options
