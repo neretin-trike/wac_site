@@ -155,26 +155,26 @@ function recurse(name, url = ''){
 	var roots = name.slice(0,pos);
 	var remain = name.slice(pos+1, name.length);
 
-	if (remain.indexOf('>') == -1){
-		bro = remain.split('+');
-	}
-
 	if (pos != -1){
 		console.log('root:'+roots);
 		console.log('remain:'+remain);
 
 		url = url + '/' + roots;
-		// console.log('	url:'+url);
 		urls.push(url);
-		
-		bro.forEach(element => {
-			console.log('bro:'+element);
-			urls.push(url+'/'+element);
-		});
 		
 		console.log('============');
 
 		recurse(remain,url);
+	}
+	else{
+		if (remain.indexOf('+') != -1){
+			bro = remain.split('+');
+
+			bro.forEach(element => {
+				console.log('bro:'+element);
+				urls.push(url+'/'+element);
+			});
+		}
 	}
 }
 
