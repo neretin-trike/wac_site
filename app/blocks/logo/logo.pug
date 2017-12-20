@@ -1,4 +1,4 @@
 mixin logo(src)
-    .logo
+    .logo(class!=attributes.class)
         .logo__wrap
             img.logo__img(src="images/"+src, alt="")

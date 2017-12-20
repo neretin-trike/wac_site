@@ -1,15 +1,15 @@
 mixin portfolio()
     section.portfolio
         .container.portfolio__container
-            +logo("logo.png")
-            h2.head-2.about__head-2.row-start-1.col-span-6.col-start-7 Our portfolio
-            p.text.row-start-2.col-span-6.col-start-7  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sed elit tortor. Quisque bibendum mauris velit easely documented
-            article.gallery.row-start-3.col-span-12
+            +logo("logo_purple.png")(class="row-span-2")
+            h2.head-2.head-2_right.portfolio__head-2.row-start-1.col-span-6.col-start-7 Our portfolio
+            p.text.text_right.row-start-2.col-span-6.col-start-7  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sed elit tortor. Quisque bibendum mauris velit easely documented
+            article.gallery.portfolio__gallery.row-start-3.col-span-12
                 +gallery-item('image_1.jpg','Title about work')(class='row-start-1 col-span-3')
-                +gallery-item('image_2.jpg','1About work')(class='row-start-2 col-span-1')
-                +gallery-item('image_3.jpg','2About work')(class='row-start-2 col-span-1')
-                +gallery-item('image_4.jpg','3About work')(class='row-start-3 col-span-1')
-                +gallery-item('image_5.jpg','4About work')(class='row-start-3 col-span-1')
-                +gallery-item('image_6.jpg','5About work')(class='row-start-2 row-span-2 col-span-1')
+                +gallery-item('image_2.jpg','About work')(class='row-start-2 col-span-1')
+                +gallery-item('image_3.jpg','About work')(class='row-start-2 col-span-1')
+                +gallery-item('image_4.jpg','About work')(class='row-start-3 col-span-1')
+                +gallery-item('image_5.jpg','About work')(class='row-start-3 col-span-1')
+                +gallery-item('image_6.jpg','About work')(class='row-start-2 row-span-2 col-span-1')
             p.text.row-start-4.col-span-6  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sed elit tortor. Quisque bibendum mauris velit easely documented
-            button.button.portfolio__button.button_theme_outline.row-start-4.col-start-10 all works
+            button.button.portfolio__button.button_theme_work.row-start-4.col-start-10.col-span-3 all works
