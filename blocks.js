@@ -181,19 +181,16 @@ function recurse(name, url = '',hyphen = ''){
 	else{
 		if (name.indexOf('+') != -1){
 
-			if (posAncestor == -1){
-				bro = name.split('+');
-				
-				bro.forEach(element => {
-					recurse(element,url,hyphen);
-				});
-			}
-			else{
-				var roots = name.slice(0,posDescendant);
-				var remain = name.slice(posDescendant+1, name.length);
+			var roots = name.slice(0,posDescendant);
+			var remain = name.slice(posDescendant+1, name.length);
+
+			bro = name.split('+');
+			
+			bro.forEach(element => {
+				recurse(element,url,hyphen);
+			});
 	
-				recurse(remain,url,hyphen);
-			}
+			recurse(remain,url,hyphen);
 
 		}
 	}

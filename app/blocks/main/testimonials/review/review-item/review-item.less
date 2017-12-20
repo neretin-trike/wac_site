@@ -1,4 +1,37 @@
 .review-item{
     display: grid;
     grid-auto-flow: column;
+
+    &__wrap{
+        width:10rem;
+        height: 10rem;
+        border-radius: 5rem;
+
+        overflow: hidden;
+    }
+
+    &__name{
+        margin-top: 1.8rem;
+        margin-bottom: 0;
+        
+        text-align: center;
+        color: @color-bluegray;
+        font-weight: @font-weight-semibold;
+    }
+
+    &__text{
+        background-color: #f7f7f7;
+        border-left: 0.4rem solid #de4bc6;
+
+        padding: 2rem 2.5rem;
+        padding-right: 1.5rem;
+
+        margin: 0;
+        margin-left: 3rem;
+        margin-right: 2.5rem;
+
+        color: #96a9bb;
+        line-height: 2.2rem;
+
+    }
 }
