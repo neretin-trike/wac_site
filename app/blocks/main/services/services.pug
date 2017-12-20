@@ -3,7 +3,7 @@ mixin services()
         .container.services__container
             h2.head-2.services__head-2.row-start-1.col-span-6 Our services
             p.text.row-start-2.col-span-6 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sed elit tortor. Quisque bibendum mauris velit easely documented
-            .features.row-strart-3.col-start-1.col-span-6
+            .features.services__features.row-strart-3.col-start-1.col-span-6
                 +feature-item('Branding')
                 +feature-item('Web-application')
                 +feature-item('Support')
@@ -11,4 +11,4 @@ mixin services()
                 +feature-item('SEO')
                 +feature-item('Coding')
             +img-wrap('service.png')(class="col-start-7 row-start-1 row-span-4 col-span-6")
-            button.button.services__button.button_theme_outline.row-start-4 learn more
+            button.button.services__button.button_theme_outline.row-start-4.col-span-3 learn more

@@ -137,7 +137,6 @@ const blockNameFromCli = process.argv
 		// join all arguments to one string (to simplify the capture user input errors)
 		.slice(2)
 		.join(' ');
-		// .split('+');
 
 
 //block>(block2>block21+block22)+block3
@@ -156,8 +155,9 @@ function recurse(name, url = ''){
 	var roots = name.slice(0,pos);
 	var remain = name.slice(pos+1, name.length);
 
-	if (remain.indexOf('>') == -1)
+	if (remain.indexOf('>') == -1){
 		bro = remain.split('+');
+	}
 
 	if (pos != -1){
 		console.log('root:'+roots);
@@ -169,7 +169,6 @@ function recurse(name, url = ''){
 		
 		bro.forEach(element => {
 			console.log('bro:'+element);
-			// console.log('	url:'+url+'/'+element);
 			urls.push(url+'/'+element);
 		});
 		
@@ -185,7 +184,7 @@ console.log(urls);
 // If the user pass the name of the block in the command-line options
 // that create a block. Otherwise - activates interactive mode
 if (blockNameFromCli !== '') {
-	createAnotherFiles()
+	//createAnotherFiles()
 	// initMakeBlock(blockNameFromCli).catch(printErrorMessage);
 } 
 else {
@@ -200,7 +199,7 @@ else {
 function createAnotherFiles(){
 	urls.forEach(function(item, i, arr) {
 		dir = BLOCKS_DIR + item;
-		
+
 		var nam = item.split('/');
 		initMakeBlock(nam[nam.length-1]).catch(printErrorMessage);
 	});

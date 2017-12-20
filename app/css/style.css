@@ -794,8 +794,9 @@ body {
   -webkit-text-fill-color: transparent;
 }
 .about__container {
-  padding-top: 7rem;
+  padding: 7rem 0;
   grid-template-rows: repeat(3, auto);
+  border-bottom: 0.4rem solid #efefef;
 }
 .about__head-2 {
   margin-top: 5rem;
@@ -806,16 +807,57 @@ body {
   margin-bottom: 5.5rem;
 }
 .services__container {
-  padding-top: 15rem;
+  padding-top: 5.6rem;
+  padding-bottom: 5rem;
+  border-bottom: 0.4rem solid #efefef;
 }
 .services__head-2 {
-  margin-bottom: 7.5rem;
+  margin-bottom: 0;
+}
+.services__features {
+  margin-top: 5rem;
+}
+.services__button {
+  margin-top: 9.5rem;
 }
 .features {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-row-gap: 4rem;
-  grid-column-gap: 7rem;
+  grid-gap: 4rem;
+}
+.feature-item {
+  text-align: center;
+}
+.feature-item__wrap {
+  position: relative;
+  margin: 0 auto;
+  width: 8.8rem;
+  height: 8.8rem;
+  border: 0.1rem solid #cf38ef;
+  border-radius: 4.4rem;
+}
+.feature-item__img {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+}
+.feature-item__name:before {
+  content: "";
+  display: block;
+  margin: 1.1rem auto;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 0.5rem;
+  background-color: #d828b8;
+}
+.feature-item__caption {
+  margin: 0;
+  color: #3a4142;
+  font-size: 1.6rem;
+  font-weight: 900;
 }
 .portfolio {
   padding-top: 17rem;

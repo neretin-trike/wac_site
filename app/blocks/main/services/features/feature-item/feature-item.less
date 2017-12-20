@@ -1,0 +1,43 @@
+.feature-item{
+    text-align: center;
+
+    &__wrap{
+        position: relative;
+
+        margin: 0 auto;
+        width: 8.8rem;
+        height: 8.8rem;
+
+        border: 0.1rem solid #cf38ef;
+        border-radius: 4.4rem;
+    }
+
+    &__img{
+        position: absolute;
+        left: 0; right: 0;
+        bottom: 0;top: 0;
+        margin: auto;
+    }
+
+    &__name{
+        &:before{
+            content: "";
+            display: block;
+            margin: 1.1rem auto;
+            
+            width: 1rem;
+            height: 1rem;
+            border-radius: 0.5rem;
+
+            background-color: #d828b8;
+        }
+    }
+
+    &__caption{
+        margin: 0;
+        color: @color-bluegray;
+        
+        font-size: 1.6rem;
+        font-weight: @font-weight-black;
+    }
+}
