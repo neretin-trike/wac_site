@@ -11,6 +11,8 @@ const rl = readline.createInterface(process.stdin, process.stdout);
 // folder with all blocks
 const BLOCKS_DIR = path.join(__dirname, 'app/blocks');
 
+var dir = BLOCKS_DIR;
+
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 // default content for files in new block
@@ -104,7 +106,7 @@ function printErrorMessage(errText) {
 // //////////////////////////////////////////////////////////////////////////
 
 function initMakeBlock(blockName) {
-	const blockPath = path.join(BLOCKS_DIR, blockName);
+	const blockPath = dir;//path.join(dir, blockName);
 
 	return validateBlockName(blockName)
 		.then(() => directoryExist(blockPath, blockName))
@@ -143,36 +145,47 @@ const blockNameFromCli = process.argv
 // b>b2>b21+b22+b23
 
 console.log('-------------');
+
+var urls = [];
 		
-function recurse(name){
-	
+function recurse(name, url = ''){
+
+	var bro = [];
 	var pos = name.indexOf('>');
 	
 	var roots = name.slice(0,pos);
 	var remain = name.slice(pos+1, name.length);
 
-	var bro = remain.split('+');
+	if (remain.indexOf('>') == -1)
+		bro = remain.split('+');
 
 	if (pos != -1){
 		console.log('root:'+roots);
 		console.log('remain:'+remain);
 
+		url = url + '/' + roots;
+		// console.log('	url:'+url);
+		urls.push(url);
+		
 		bro.forEach(element => {
 			console.log('bro:'+element);
+			// console.log('	url:'+url+'/'+element);
+			urls.push(url+'/'+element);
 		});
 		
 		console.log('============');
-		recurse(remain);
-	}
 
+		recurse(remain,url);
+	}
 }
 
 recurse(blockNameFromCli);
+console.log(urls);
 
 // If the user pass the name of the block in the command-line options
 // that create a block. Otherwise - activates interactive mode
 if (blockNameFromCli !== '') {
-	// createAnotherFiles()
+	createAnotherFiles()
 	// initMakeBlock(blockNameFromCli).catch(printErrorMessage);
 } 
 else {
@@ -185,8 +198,11 @@ else {
 }
 
 function createAnotherFiles(){
-	blockNameFromCli.forEach(function(item, i, arr) {
-		initMakeBlock(item.trim()).catch(printErrorMessage);
+	urls.forEach(function(item, i, arr) {
+		dir = BLOCKS_DIR + item;
+		
+		var nam = item.split('/');
+		initMakeBlock(nam[nam.length-1]).catch(printErrorMessage);
 	});
 }
 

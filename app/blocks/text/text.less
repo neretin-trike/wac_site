@@ -1,6 +1,31 @@
 .text{
-    font-size: 1.8rem;
-    line-height: 3rem;
+    font-size: 1.6rem;
+    line-height: 3.6rem;
     
     color: @text-color;
+
+    &_right{
+        text-align: right;
+    }
+
+    &_theme_about{
+        background-color: @background-color;
+        position: relative;
+
+        margin-left: 6.7rem;
+        padding-bottom: 3.5rem;
+        text-indent: 2rem;
+
+        &:after{
+            content: '';
+            display: block;
+            position: absolute;
+            z-index: -1;
+            width: 107%;
+            height: 91%;
+            top: 1.4rem;
+            left: -5.4rem;
+            border: 0.6rem solid @color-lightgray;
+        }
+    }
 }
