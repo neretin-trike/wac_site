@@ -134,13 +134,45 @@ function initMakeBlock(blockName) {
 const blockNameFromCli = process.argv
 		// join all arguments to one string (to simplify the capture user input errors)
 		.slice(2)
-		.join(' ')
-		.split('+');
+		.join(' ');
+		// .split('+');
+
+
+//block>(block2>block21+block22)+block3
+
+// b>b2>b21+b22+b23
+
+console.log('-------------');
+		
+function recurse(name){
+	
+	var pos = name.indexOf('>');
+	
+	var roots = name.slice(0,pos);
+	var remain = name.slice(pos+1, name.length);
+
+	var bro = remain.split('+');
+
+	if (pos != -1){
+		console.log('root:'+roots);
+		console.log('remain:'+remain);
+
+		bro.forEach(element => {
+			console.log('bro:'+element);
+		});
+		
+		console.log('============');
+		recurse(remain);
+	}
+
+}
+
+recurse(blockNameFromCli);
 
 // If the user pass the name of the block in the command-line options
 // that create a block. Otherwise - activates interactive mode
 if (blockNameFromCli !== '') {
-	createAnotherFiles()
+	// createAnotherFiles()
 	// initMakeBlock(blockNameFromCli).catch(printErrorMessage);
 } 
 else {
@@ -158,4 +190,3 @@ function createAnotherFiles(){
 	});
 }
 
-//block>(block2>block21)+block3

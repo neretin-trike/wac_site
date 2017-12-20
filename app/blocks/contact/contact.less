@@ -7,6 +7,40 @@
         display: grid;
         grid-auto-flow: column;
         justify-content: space-between;
-        
     }
+
+    &__item{
+        padding: 0.5rem 0;
+    }
+
+    &__phone{
+        font-weight: @font-weight-semibold;
+        font-size: 1.8rem;
+        color: @color-bluegray;
+    }
+
+    &__link{
+        display: block;
+        background-image:url(../images/social_media.png);
+        background-repeat: no-repeat;
+        width: 2.5rem;
+        height: 2rem;
+
+        &_twitter{
+            background-position: 0.3rem center;
+        }
+
+        &_facebook{
+            background-position: -3rem center;
+        }
+
+        &_instagram{
+            background-position: -6.2rem center;
+        }
+        
+        &_linkedin{
+            background-position: -9.4rem center;
+        }
+    }
+
 }

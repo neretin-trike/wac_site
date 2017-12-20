@@ -448,7 +448,7 @@ html {
 }
 body {
   height: 100vh;
-  font-family: 'raleway';
+  font-family: 'proximanova';
   font-size: 1.4rem;
   background-color: #ffffff;
 }
@@ -619,7 +619,7 @@ body {
 .text {
   font-size: 1.8rem;
   line-height: 3rem;
-  color: #878787;
+  color: #4a4a4a;
 }
 .button {
   display: inline-block;
@@ -637,12 +637,10 @@ body {
   border: 0.2rem solid #cccccc;
   font-size: 1.8rem;
   font-weight: 500;
-  color: #878787;
+  color: #4a4a4a;
 }
 .button_theme_outline:hover {
-  background-color: #0169b4;
   color: #ffffff;
-  border-color: #0169b4;
   box-shadow: 0 0 1.6rem #0169b4;
 }
 .button_theme_go {
@@ -663,7 +661,6 @@ body {
 }
 .head-2 {
   font-size: 5rem;
-  color: #0169b4;
   line-height: 3rem;
   font-weight: 500;
   margin-bottom: 0;
@@ -675,12 +672,9 @@ body {
 .img-wrap__image {
   max-height: 100%;
 }
-.header {
-  font-family: 'montserrat';
-}
 .header__container {
   align-items: center;
-  padding: 2.3rem 0;
+  padding: 2.4rem 0;
 }
 .logo {
   position: relative;
@@ -700,14 +694,13 @@ body {
   margin: 0;
   display: grid;
   grid-auto-flow: column;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .menu__item {
   padding: 0.5rem 0;
 }
 .menu__link {
-  text-transform: uppercase;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   padding: 0.5rem 0;
 }
 .menu__link_active {
@@ -721,8 +714,32 @@ body {
   grid-auto-flow: column;
   justify-content: space-between;
 }
-.main {
-  margin-top: -27rem;
+.contact__item {
+  padding: 0.5rem 0;
+}
+.contact__phone {
+  font-weight: 600;
+  font-size: 1.8rem;
+  color: #3a4142;
+}
+.contact__link {
+  display: block;
+  background-image: url(../images/social_media.png);
+  background-repeat: no-repeat;
+  width: 2.5rem;
+  height: 2rem;
+}
+.contact__link_twitter {
+  background-position: 0.3rem center;
+}
+.contact__link_facebook {
+  background-position: -3rem center;
+}
+.contact__link_instagram {
+  background-position: -6.2rem center;
+}
+.contact__link_linkedin {
+  background-position: -9.4rem center;
 }
 .home {
   padding-top: 32.5rem;
@@ -827,7 +844,6 @@ body {
 }
 .footer {
   background-image: linear-gradient(45deg, #a72b8f 0%, #0169b4 100%);
-  font-family: 'montserrat';
 }
 .footer__container {
   align-items: center;
