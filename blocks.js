@@ -233,7 +233,8 @@ function recurse(name, url = '',hyphen = ''){
 // recurse('b1+b2+b3+b4')
 // recurse('b1>b2>b3>b4+b5+b6')
 // recurse('b1>b2+b3>b4+b5>b6+b7>b8+b9')
-// recurse('b1>b3+b5>b2+b21');
+// recurse('b1+b2+(b3>b31+b32>b321+b322)+b4');
+// recurse('b1+b2+(b3>b31+(b32>b321+b322)+b33)+b4');
 
 recurse('b1+(b2>b21+b22)+b3+b4')
 
