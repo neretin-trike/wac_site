@@ -181,22 +181,33 @@ function recurse(name, url = '',hyphen = ''){
 	else{
 		if (name.indexOf('+') != -1){
 
-			var roots = name.slice(0,posDescendant);
-			var remain = name.slice(posDescendant+1, name.length);
+			if (posAncestor == -1){
+				bro = name.split('+');
+				
+				bro.forEach(element => {
+					recurse(element,url,hyphen);
+				});
+			}
+			else{
+				var roots = name.slice(0,posDescendant);
+				var remain = name.slice(posDescendant+1, name.length);
 
-			bro = name.split('+');
-			
-			bro.forEach(element => {
-				recurse(element,url,hyphen);
-			});
-	
-			recurse(remain,url,hyphen);
-
+				bro[0] = roots;
+				bro[1] = remain;
+				
+				bro.forEach(element => {
+					recurse(element,url,hyphen);
+				});
+			}
 		}
 	}
 }
 
 // recurse('b>b1+b2>b21>b211>b2222>b33>b85+b213+b787');
+// recurse('b1>b3+b4+b5>b6+b21+b22+b23>b33');
+// recurse('b1+b2+b3+b4')
+// recurse('b1>b2>b3>b4+b5+b6')
+// recurse('b1>b2+b3>b4+b5>b6+b7>b8+b9')
 recurse('b1>b3+b5>b2+b21');
 
 // recurse(blockNameFromCli);
