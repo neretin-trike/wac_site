@@ -146,6 +146,14 @@ console.log('-------------');
 
 var urls = [];
 		
+function getCloseBrkIndx(str){
+	for (var i = str.length; i>0; i--){
+		if (str[i]==')')
+			return i;
+	}
+}
+
+
 function recurse(name, url = '',hyphen = ''){
 	var bro = [];
 
@@ -194,6 +202,23 @@ function recurse(name, url = '',hyphen = ''){
 
 				bro[0] = roots;
 				bro[1] = remain;
+
+				if(remain[0]=='('){
+				// var c = getCloseBrkIndx(remain);
+					
+					var posBkr = remain.indexOf(')');
+					var newRemain = remain.slice(1,posBkr);
+					bro[1] = newRemain;
+
+					var c = remain.slice(posBkr+2,remain.length);
+
+					var newBro = c.split('+');
+					newBro.forEach(element => {
+						bro.push(element);
+					});
+
+					var b = 0;
+				}
 				
 				bro.forEach(element => {
 					recurse(element,url,hyphen);
@@ -208,7 +233,9 @@ function recurse(name, url = '',hyphen = ''){
 // recurse('b1+b2+b3+b4')
 // recurse('b1>b2>b3>b4+b5+b6')
 // recurse('b1>b2+b3>b4+b5>b6+b7>b8+b9')
-recurse('b1>b3+b5>b2+b21');
+// recurse('b1>b3+b5>b2+b21');
+
+recurse('b1+(b2>b21+b22)+b3+b4')
 
 // recurse(blockNameFromCli);
 console.log(urls);
