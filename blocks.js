@@ -144,7 +144,6 @@ const blockNameFromCli = process.argv
 
 console.log('-------------');
 
-
 var urls = [];
 		
 function getCloseBrkIndx(str){
@@ -251,7 +250,7 @@ function recurse(name, url = '',hyphen = ''){
 					}
 				}
 
-				var regex = /[\[]|[\]]/ig;
+				var regex = /[\]][\+]|[\[]|[\]]/ig;
 				var newBro = remain.split(regex);
 
 				newBro.forEach(function(item, i, arr) {
@@ -301,12 +300,11 @@ function recurse(name, url = '',hyphen = ''){
 // recurse('b1>b2+b3>b4+b5>b6+b7>b8+b9')
 // recurse('b1+b2+(b3>b31+b32>b321+b322)+b4');
 // recurse('b1+b2+(b3>b31+(b32>b321+b322)+b33)+b4');
-
-// recurse('b2>b21+(b22>b211+(b212>b2121+b2122)+b23)+b5+(b3>b31+b32)+b4+(b6>b61+(b63>b631+b632)+b62)');
+// recurse('b1+(b2>b21+b22+b23)+b8+b10+(b3>b31+b32)+(b4>b41+b42)')
+// recurse('b1+(b2>b21+b22+b23)+b8>b10+(b3>b31+b32)+(b4>b41+b42)')
 
 //РАССМОТРЕТЬ
-// recurse('b1+(b2>b21+b22+b23)+b8+b10+(b3>b31+b32)+(b4>b41+b42)')
-recurse('b1+(b2>b21+b22+b23)+b8>b10+(b3>b31+b32)+(b4>b41+b42)')
+recurse('b2>b21+(b22>b211+(b212>b2121+b2122)+b23)+b5+(b3>b31+b32)+b4+(b6>b61+(b63>b631+b632)+b62)');
 
 console.log(urls);
 
