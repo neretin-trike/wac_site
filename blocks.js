@@ -251,21 +251,40 @@ function recurse(name, url = '',hyphen = ''){
 					}
 				}
 
+				var regex = /[\[]|[\]]/ig;
+				var newBro = remain.split(regex);
+
+				newBro.forEach(function(item, i, arr) {
+					var abc = item.indexOf('>');
+
+					if (abc==-1){
+						temp = item.split('+');
+
+						newBro.splice(i,1);
+
+						temp.forEach(el => {
+							newBro.push(el);
+						});
+					}
+				  });
+
 				var c = 0;
 
-				var regex = /[\]\+]*[\+][\[]|[\]][\+]|[\]]|[\[]/ig;
-				// var regex = /[\[]|[\]]/ig;
 				if (regex!=null){
-					bro.splice(1,1);
-					var newBro = remain.split(regex);
 
-					newBro.forEach(element => {
+					bro.splice(1,1);
+
+					var positiveArr = newBro.filter(function(arg) {
+						return arg != "";
+					});
+
+					positiveArr.forEach(element => {
 						bro.push(element);
 					});
 				}
-
-
-
+				
+				// var regex = /[\]\+]*[\+][\[]|[\]][\+]|[\]]|[\[]/ig;
+				// var regex = /[\[]|[\]]/ig;
 
 				bro.forEach(element => {
 					recurse(element,url,hyphen);
@@ -286,9 +305,8 @@ function recurse(name, url = '',hyphen = ''){
 // recurse('b2>b21+(b22>b211+(b212>b2121+b2122)+b23)+b5+(b3>b31+b32)+b4+(b6>b61+(b63>b631+b632)+b62)');
 
 //РАССМОТРЕТЬ
-recurse('b1+(b2>b21+b22+b23)+b8+b10+(b3>b31+b32)+(b4>b41+b42)')
-// recurse('b1+(b2>b21+b22+b23)+b8>b10+(b3>b31+b32)+(b4>b41+b42)')
-
+// recurse('b1+(b2>b21+b22+b23)+b8+b10+(b3>b31+b32)+(b4>b41+b42)')
+recurse('b1+(b2>b21+b22+b23)+b8>b10+(b3>b31+b32)+(b4>b41+b42)')
 
 console.log(urls);
 
