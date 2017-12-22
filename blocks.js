@@ -138,28 +138,15 @@ const blockNameFromCli = process.argv
 		.slice(2)
 		.join(' ');
 
-//block>(block2>block21+block22)+block3
-// b>b2>b21+b22+b23
-// b>b1+b2>b21>b211+b212+b213
-
 console.log('-------------');
 
-
 var urls = [];
-		
-function getCloseBrkIndx(str){
-	for (var i = str.length; i>0; i--){
-		if (str[i]==')')
-			return i;
-	}
-}
 
 function replaceAt(string, index, replace) {
 	return string.substring(0, index) + replace + string.substring(index + 1);
 }
 
-
-function recurse(name, url = '',hyphen = ''){
+function parseForTree(name, url = '',hyphen = ''){
 	var bro = [];
 
 	var posAncestor = name.indexOf('>');
@@ -178,7 +165,7 @@ function recurse(name, url = '',hyphen = ''){
 			url = url + '/' + roots;
 			urls.push(url);
 			console.log('··············');
-			recurse(remain,url,hyphen);
+			parseForTree(remain,url,hyphen);
 		}
 		if (posAncestor == -1){
 			hyphen += '— ';
@@ -198,7 +185,7 @@ function recurse(name, url = '',hyphen = ''){
 				bro = name.split('+');
 				
 				bro.forEach(element => {
-					recurse(element,url,hyphen);
+					parseForTree(element,url,hyphen);
 				});
 			}
 			else{
@@ -255,7 +242,7 @@ function recurse(name, url = '',hyphen = ''){
 						var abc = item.indexOf('>');
 	
 						if (abc==-1){
-							temp = item.split('+');
+							var temp = item.split('+');
 	
 							newBro.splice(i,1);
 	
@@ -279,36 +266,40 @@ function recurse(name, url = '',hyphen = ''){
 					}
 
 				}
-				
-				// var regex = /[\]\+]*[\+][\[]|[\]][\+]|[\]]|[\[]/ig;
-				// var regex = /[\[]|[\]]/ig;
 
 				bro.forEach(element => {
-					recurse(element,url,hyphen);
+					parseForTree(element,url,hyphen);
 				});
 			}
 		}
 	}
 }
 
-// recurse('b>b1+b2>b21>b211>b2222>b33>b85+b213+b787');
-// recurse('b1>b3+b4+b5>b6+b21+b22+b23>b33');
-// recurse('b1+b2+b3+b4')
-// recurse('b1>b2>b3>b4+b5+b6')
-// recurse('b1>b2+b3>b4+b5>b6+b7>b8+b9')
-// recurse('b1+b2+(b3>b31+b32>b321+b322)+b4');
-// recurse('b1+b2+(b3>b31+(b32>b321+b322)+b33)+b4');
-// recurse('b1+(b2>b21+b22+b23)+b8+b10+(b3>b31+b32)+(b4>b41+b42)')
-// recurse('b1+(b2>b21+b22+b23)+b8>b10+(b3>b31+b32)+(b4>b41+b42)')
-// recurse('b2>b21+(b22>b211+(b212>b2121+b2122)+b23)+b5+(b3>b31+b32)+b4+(b6>b61+(b63>b631+b632)+b62)');
-// recurse('b2>b21+(b22>b211+(b212>b2121+b2122)+b23)+b5');
+// var regex = /[\]\+]*[\+][\[]|[\]][\+]|[\]]|[\[]/ig;
+// var regex = /[\[]|[\]]/ig;
+
+// parseForTree('b>b1+b2>b21>b211>b2222>b33>b85+b213+b787');
+// parseForTree('b1>b3+b4+b5>b6+b21+b22+b23>b33');
+// parseForTree('b1+b2+b3+b4')
+// parseForTree('b1>b2>b3>b4+b5+b6')
+// parseForTree('b1>b2+b3>b4+b5>b6+b7>b8+b9')
+// parseForTree('b1+b2+(b3>b31+b32>b321+b322)+b4');
+// parseForTree('b1+b2+(b3>b31+(b32>b321+b322)+b33)+b4');
+// parseForTree('b1+(b2>b21+b22+b23)+b8+b10+(b3>b31+b32)+(b4>b41+b42)')
+// parseForTree('b1+(b2>b21+b22+b23)+b8>b10+(b3>b31+b32)+(b4>b41+b42)')
+// parseForTree('b2>b21+(b22>b211+(b212>b2121+b2122)+b23)+b5');
+// parseForTree('b2>b21+(b22>b211+(b212>b2121+b2122)+b23)+b5+(b3>b31+b32)+b4+(b6>b61+(b63>b631+b632)+b62)');
+
+parseForTree(blockNameFromCli);
+
+
 
 console.log(urls);
 
 // If the user pass the name of the block in the command-line options
 // that create a block. Otherwise - activates interactive mode
 if (blockNameFromCli !== '') {
-	//createAnotherFiles()
+	// createAnotherFiles()
 	// initMakeBlock(blockNameFromCli).catch(printErrorMessage);
 } 
 else {
