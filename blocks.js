@@ -208,12 +208,14 @@ function recurse(name, url = '',hyphen = ''){
 				bro[0] = roots;
 				bro[1] = remain;
 
+				var a = 0;
 
-				
 				var open = "(";
 				var openArr = [];
 				var close = ")";
 				var closeArr = [];
+				var ances = ">";
+				var ancesArr = [];
 
 				for (var i = 0; i<remain.length; i++){
 					if (remain[i]==open){
@@ -222,49 +224,48 @@ function recurse(name, url = '',hyphen = ''){
 					if (remain[i]==close){
 						closeArr.push(i)
 					}
+					if (remain[i]==ances){
+						ancesArr.push(i)
+					}
 				}
 
 				remain = replaceAt(remain, openArr[0], "["); 
-				remain = replaceAt(remain, closeArr[closeArr.length-1], "]"); 
 
-				for (var i = 1; i<closeArr.length; i++){
+				levelSearch: for (var i = 1; i<closeArr.length; i++){
+
 					if (openArr[i]>closeArr[i-1]){
-						remain = replaceAt(remain, openArr[i], "["); 
+						
 						remain = replaceAt(remain, closeArr[i-1], "]"); 
+						
+						for (var j = 0; j<ancesArr.length; j++){
+							if ((closeArr[i-1]<ancesArr[j])&&(ancesArr[j]<openArr[i])){
+								break levelSearch;
+							}
+						}
+
+						remain = replaceAt(remain, openArr[i], "["); 
+					}
+
+					if (i==closeArr.length-1){
+						remain = replaceAt(remain, closeArr[i], "]"); 
 					}
 				}
 
 				var c = 0;
 
-				// var regex = /[\)+\+][\++\(]/ig;
-				// if (regex!=null){
-				// 	bro.splice(1,1);
-				// 	var newRemain = remain.replace('(','');
-				// 	var newBro = newRemain.split(regex);
+				var regex = /[\]\+]*[\+][\[]|[\]][\+]|[\]]|[\[]/ig;
+				// var regex = /[\[]|[\]]/ig;
+				if (regex!=null){
+					bro.splice(1,1);
+					var newBro = remain.split(regex);
 
-				// 	newBro.forEach(element => {
-				// 		bro.push(element);
-				// 	});
-	
-				// 	var b = 0;
-				// }
+					newBro.forEach(element => {
+						bro.push(element);
+					});
+				}
 
-				// if(remain[0]=='('){
-				//     var c = getCloseBrkIndx(remain);
-					
-				// 	var posBkr = c;//remain.indexOf(')');
-				// 	var newRemain = remain.slice(1,posBkr);
-				// 	bro[1] = newRemain;
 
-				// 	var c = remain.slice(posBkr+2,remain.length);
 
-				// 	var newBro = c.split('+');
-				// 	newBro.forEach(element => {
-				// 		bro.push(element);
-				// 	});
-
-				// 	var b = 0;
-				// }
 
 				bro.forEach(element => {
 					recurse(element,url,hyphen);
@@ -282,10 +283,13 @@ function recurse(name, url = '',hyphen = ''){
 // recurse('b1+b2+(b3>b31+b32>b321+b322)+b4');
 // recurse('b1+b2+(b3>b31+(b32>b321+b322)+b33)+b4');
 
-recurse('(b2>b21+(b22>b211+(b212>b2121+b2122)+b23)+b5+(b3>b31+b32)+b4+(b6>b61+(b63>b631+b632)+b62)')
-// recurse('b1+(b2>b21+b22+b23)+b5+(b3>b31+b32)+b4')
+// recurse('b2>b21+(b22>b211+(b212>b2121+b2122)+b23)+b5+(b3>b31+b32)+b4+(b6>b61+(b63>b631+b632)+b62)');
 
-// recurse(blockNameFromCli);
+//РАССМОТРЕТЬ
+recurse('b1+(b2>b21+b22+b23)+b8+b10+(b3>b31+b32)+(b4>b41+b42)')
+// recurse('b1+(b2>b21+b22+b23)+b8>b10+(b3>b31+b32)+(b4>b41+b42)')
+
+
 console.log(urls);
 
 // If the user pass the name of the block in the command-line options
