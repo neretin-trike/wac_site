@@ -144,6 +144,7 @@ const blockNameFromCli = process.argv
 
 console.log('-------------');
 
+
 var urls = [];
 		
 function getCloseBrkIndx(str){
@@ -151,6 +152,10 @@ function getCloseBrkIndx(str){
 		if (str[i]==')')
 			return i;
 	}
+}
+
+function replaceAt(string, index, replace) {
+	return string.substring(0, index) + replace + string.substring(index + 1);
 }
 
 
@@ -203,19 +208,46 @@ function recurse(name, url = '',hyphen = ''){
 				bro[0] = roots;
 				bro[1] = remain;
 
-				var regex = /[\)+\+][\++\(]/ig;
-				if (regex!=null){
-					bro.splice(1,1);
-					var newRemain = remain.replace('(','');
-					var newBro = newRemain.split(regex);
 
-					newBro.forEach(element => {
-						bro.push(element);
-					});
-	
-					var b = 0;
+				
+				var open = "(";
+				var openArr = [];
+				var close = ")";
+				var closeArr = [];
+
+				for (var i = 0; i<remain.length; i++){
+					if (remain[i]==open){
+						openArr.push(i)
+					}
+					if (remain[i]==close){
+						closeArr.push(i)
+					}
 				}
 
+				remain = replaceAt(remain, openArr[0], "["); 
+				remain = replaceAt(remain, closeArr[closeArr.length-1], "]"); 
+
+				for (var i = 1; i<closeArr.length; i++){
+					if (openArr[i]>closeArr[i-1]){
+						remain = replaceAt(remain, openArr[i], "["); 
+						remain = replaceAt(remain, closeArr[i-1], "]"); 
+					}
+				}
+
+				var c = 0;
+
+				// var regex = /[\)+\+][\++\(]/ig;
+				// if (regex!=null){
+				// 	bro.splice(1,1);
+				// 	var newRemain = remain.replace('(','');
+				// 	var newBro = newRemain.split(regex);
+
+				// 	newBro.forEach(element => {
+				// 		bro.push(element);
+				// 	});
+	
+				// 	var b = 0;
+				// }
 
 				// if(remain[0]=='('){
 				//     var c = getCloseBrkIndx(remain);
@@ -250,8 +282,8 @@ function recurse(name, url = '',hyphen = ''){
 // recurse('b1+b2+(b3>b31+b32>b321+b322)+b4');
 // recurse('b1+b2+(b3>b31+(b32>b321+b322)+b33)+b4');
 
-// recurse('(b2>b21+(b22>b211+b212)+b23)+b5+(b3>b31+b32)+b4')
-recurse('b1+(b2>b21+b22+b23)+b5+(b3>b31+b32)+b4')
+recurse('(b2>b21+(b22>b211+(b212>b2121+b2122)+b23)+b5+(b3>b31+b32)+b4+(b6>b61+(b63>b631+b632)+b62)')
+// recurse('b1+(b2>b21+b22+b23)+b5+(b3>b31+b32)+b4')
 
 // recurse(blockNameFromCli);
 console.log(urls);
