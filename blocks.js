@@ -144,6 +144,7 @@ const blockNameFromCli = process.argv
 
 console.log('-------------');
 
+
 var urls = [];
 		
 function getCloseBrkIndx(str){
@@ -207,8 +208,6 @@ function recurse(name, url = '',hyphen = ''){
 				bro[0] = roots;
 				bro[1] = remain;
 
-				var a = 0;
-
 				var open = "(";
 				var openArr = [];
 				var close = ")";
@@ -228,58 +227,57 @@ function recurse(name, url = '',hyphen = ''){
 					}
 				}
 
-				remain = replaceAt(remain, openArr[0], "["); 
+				if( (openArr.length != 0 ) || (closeArr.length != 0)){
+					remain = replaceAt(remain, openArr[0], "["); 
 
-				levelSearch: for (var i = 1; i<closeArr.length; i++){
-
-					if (openArr[i]>closeArr[i-1]){
-						
-						remain = replaceAt(remain, closeArr[i-1], "]"); 
-						
-						for (var j = 0; j<ancesArr.length; j++){
-							if ((closeArr[i-1]<ancesArr[j])&&(ancesArr[j]<openArr[i])){
-								break levelSearch;
+					levelSearch: for (var i = 1; i<=closeArr.length; i++){
+	
+						if (openArr[i]>closeArr[i-1]){
+							
+							remain = replaceAt(remain, closeArr[i-1], "]"); 
+							
+							for (var j = 0; j<ancesArr.length; j++){
+								if ((closeArr[i-1]<ancesArr[j])&&(ancesArr[j]<openArr[i])){
+									break levelSearch;
+								}
 							}
+	
+							remain = replaceAt(remain, openArr[i], "["); 
 						}
-
-						remain = replaceAt(remain, openArr[i], "["); 
+	
+						remain = replaceAt(remain, closeArr[closeArr.length-1], "]"); 
 					}
-
-					if (i==closeArr.length-1){
-						remain = replaceAt(remain, closeArr[i], "]"); 
-					}
-				}
-
-				var regex = /[\]][\+]|[\[]|[\]]/ig;
-				var newBro = remain.split(regex);
-
-				newBro.forEach(function(item, i, arr) {
-					var abc = item.indexOf('>');
-
-					if (abc==-1){
-						temp = item.split('+');
-
-						newBro.splice(i,1);
-
-						temp.forEach(el => {
-							newBro.push(el);
+	
+					var regex = /[\]][\+]|[\[]|[\]]/ig;
+					var newBro = remain.split(regex);
+	
+					newBro.forEach(function(item, i, arr) {
+						var abc = item.indexOf('>');
+	
+						if (abc==-1){
+							temp = item.split('+');
+	
+							newBro.splice(i,1);
+	
+							temp.forEach(el => {
+								newBro.push(el);
+							});
+						}
+					  });
+	
+					if (regex!=null){
+	
+						bro.splice(1,1);
+	
+						var positiveArr = newBro.filter(function(arg) {
+							return arg != "";
+						});
+	
+						positiveArr.forEach(element => {
+							bro.push(element);
 						});
 					}
-				  });
 
-				var c = 0;
-
-				if (regex!=null){
-
-					bro.splice(1,1);
-
-					var positiveArr = newBro.filter(function(arg) {
-						return arg != "";
-					});
-
-					positiveArr.forEach(element => {
-						bro.push(element);
-					});
 				}
 				
 				// var regex = /[\]\+]*[\+][\[]|[\]][\+]|[\]]|[\[]/ig;
@@ -302,9 +300,8 @@ function recurse(name, url = '',hyphen = ''){
 // recurse('b1+b2+(b3>b31+(b32>b321+b322)+b33)+b4');
 // recurse('b1+(b2>b21+b22+b23)+b8+b10+(b3>b31+b32)+(b4>b41+b42)')
 // recurse('b1+(b2>b21+b22+b23)+b8>b10+(b3>b31+b32)+(b4>b41+b42)')
-
-//РАССМОТРЕТЬ
-recurse('b2>b21+(b22>b211+(b212>b2121+b2122)+b23)+b5+(b3>b31+b32)+b4+(b6>b61+(b63>b631+b632)+b62)');
+// recurse('b2>b21+(b22>b211+(b212>b2121+b2122)+b23)+b5+(b3>b31+b32)+b4+(b6>b61+(b63>b631+b632)+b62)');
+// recurse('b2>b21+(b22>b211+(b212>b2121+b2122)+b23)+b5');
 
 console.log(urls);
 
