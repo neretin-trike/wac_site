@@ -273,17 +273,19 @@ function parseForTree(name, path = '',hyphen = ''){
 
 // var regex = /[\]\+]*[\+][\[]|[\]][\+]|[\]]|[\[]/ig;
 
-// parseForTree('b>b1+b2>b21>b211>b2222>b33>b85+b213+b787');
-// parseForTree('b1>b3+b4+b5>b6+b21+b22+b23>b33');
+// parseForTree('b>b1+b2>b21>b211>b2222>b33>b85+b213+b787')
+// parseForTree('b1>b3+b4+b5>b6+b21+b22+b23>b33')
 // parseForTree('b1+b2+b3+b4')
 // parseForTree('b1>b2>b3>b4+b5+b6')
 // parseForTree('b1>b2+b3>b4+b5>b6+b7>b8+b9')
-// parseForTree('b1+b2+(b3>b31+b32>b321+b322)+b4');
-// parseForTree('b1+b2+(b3>b31+(b32>b321+b322)+b33)+b4');
+// parseForTree('b1+b2+(b3>b31+b32>b321+b322)+b4')
+// parseForTree('b1+b2+(b3>b31+(b32>b321+b322)+b33)+b4')
 // parseForTree('b1+(b2>b21+b22+b23)+b8+b10+(b3>b31+b32)+(b4>b41+b42)')
 // parseForTree('b1+(b2>b21+b22+b23)+b8>b10+(b3>b31+b32)+(b4>b41+b42)')
-// parseForTree('b2>b21+(b22>b211+(b212>b2121+b2122)+b23)+b5');
-// parseForTree('b2>b21+(b22>b211+(b212>b2121+b2122)+b23)+b5+(b3>b31+b32)+b4+(b6>b61+(b63>b631+b632)+b62)');
+// parseForTree('b2>b21+(b22>b211+(b212>b2121+b2122)+b23)+b5')
+// parseForTree('b2>b21+(b22>b211+(b212>b2121+b2122)+b23)+b5+(b3>b31+b32)+b4+(b6>b61+(b63>b631+b632)+b62)')
+// parseForTree('b1>b11+(b12>b121+(b122>b1221+(b1222>b12221+b12222)))')
+// parseForTree('b1>b11+(b12>b121+(b122>b1221+(b1222>b12221+b12222)+b1223)+b123)+b13')
 
 parseForTree(blockNameFromCli);
 console.log(paths);
