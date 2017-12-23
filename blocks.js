@@ -140,13 +140,81 @@ const blockNameFromCli = process.argv
 
 console.log('-------------');
 
-var urls = [];
+var paths = [];
 
 function replaceAt(string, index, replace) {
 	return string.substring(0, index) + replace + string.substring(index + 1);
 }
 
-function parseForTree(name, url = '',hyphen = ''){
+function replaceBrackets(remain){
+
+	var openArr = [],
+		closeArr = [],
+		ancesArr = [];
+
+	for (var i = 0; i<remain.length; i++){
+		if (remain[i]=="("){
+			openArr.push(i)
+		}
+		if (remain[i]==")"){
+			closeArr.push(i)
+		}
+		if (remain[i]==">"){
+			ancesArr.push(i)
+		}
+	}
+
+	remain = replaceAt(remain, openArr[0], "["); 
+	levelSearch: for (var i = 1; i<=closeArr.length; i++){
+		if (openArr[i]>closeArr[i-1]){
+			remain = replaceAt(remain, closeArr[i-1], "]"); 
+			for (var j = 0; j<ancesArr.length; j++){
+				if ((closeArr[i-1]<ancesArr[j])&&(ancesArr[j]<openArr[i])){
+					break levelSearch;
+				}
+			}
+			remain = replaceAt(remain, openArr[i], "["); 
+		}
+	}
+	remain = replaceAt(remain, closeArr[closeArr.length-1], "]"); 
+
+	return remain;
+}
+
+function splitForDescendants(remain,bro){
+	var regex = /[\]][\+]|[\[]|[\]]/ig;
+	var newBro = remain.split(regex);
+
+	if (regex!=null){
+
+		newBro.forEach(function(item, i) {
+			if (item.indexOf('>') == -1){
+	
+				var temp = item.split('+');
+	
+				newBro.splice(i,1);
+	
+				temp.forEach(el => {
+					newBro.push(el);
+				});
+			}
+		});
+
+		bro.splice(1,1);
+
+		var positiveArr = newBro.filter(function(arg) {
+			return arg != "";
+		});
+
+		positiveArr.forEach(element => {
+			bro.push(element);
+		});
+	}
+
+	return bro;
+}
+
+function parseForTree(name, path = '',hyphen = ''){
 	var bro = [];
 
 	var posAncestor = name.indexOf('>');
@@ -157,36 +225,31 @@ function parseForTree(name, url = '',hyphen = ''){
 		var roots = name.slice(0,posAncestor);
 		var remain = name.slice(posAncestor+1, name.length);
 
+		hyphen += '— ';
+		
 		if (posAncestor != -1){
-			hyphen += '— ';
 			
 			console.log(hyphen+roots);
 
-			url = url + '/' + roots;
-			urls.push(url);
+			path += '/' + roots;
+			paths.push(path);
 			console.log('··············');
-			parseForTree(remain,url,hyphen);
+			parseForTree(remain,path,hyphen);
 		}
 		if (posAncestor == -1){
-			hyphen += '— ';
 			
 			console.log(hyphen +remain);
 			
-			url = url + '/' + remain;
-			urls.push(url);
+			path += '/' + remain;
+			paths.push(path);
 			console.log('··············');
-
 		}
 	}
 	else{
-		if (name.indexOf('+') != -1){
+		if (posDescendant != -1){
 
 			if (posAncestor == -1){
 				bro = name.split('+');
-				
-				bro.forEach(element => {
-					parseForTree(element,url,hyphen);
-				});
 			}
 			else{
 				var roots = name.slice(0,posDescendant);
@@ -195,88 +258,20 @@ function parseForTree(name, url = '',hyphen = ''){
 				bro[0] = roots;
 				bro[1] = remain;
 
-				var open = "(";
-				var openArr = [];
-				var close = ")";
-				var closeArr = [];
-				var ances = ">";
-				var ancesArr = [];
-
-				for (var i = 0; i<remain.length; i++){
-					if (remain[i]==open){
-						openArr.push(i)
-					}
-					if (remain[i]==close){
-						closeArr.push(i)
-					}
-					if (remain[i]==ances){
-						ancesArr.push(i)
-					}
+				if( remain.search('[\(]|[\)]') != -1 ){
+					remain = replaceBrackets(remain);	
+					bro = splitForDescendants(remain,bro);				
 				}
-
-				if( (openArr.length != 0 ) || (closeArr.length != 0)){
-					remain = replaceAt(remain, openArr[0], "["); 
-
-					levelSearch: for (var i = 1; i<=closeArr.length; i++){
-	
-						if (openArr[i]>closeArr[i-1]){
-							
-							remain = replaceAt(remain, closeArr[i-1], "]"); 
-							
-							for (var j = 0; j<ancesArr.length; j++){
-								if ((closeArr[i-1]<ancesArr[j])&&(ancesArr[j]<openArr[i])){
-									break levelSearch;
-								}
-							}
-	
-							remain = replaceAt(remain, openArr[i], "["); 
-						}
-	
-						remain = replaceAt(remain, closeArr[closeArr.length-1], "]"); 
-					}
-	
-					var regex = /[\]][\+]|[\[]|[\]]/ig;
-					var newBro = remain.split(regex);
-	
-					newBro.forEach(function(item, i, arr) {
-						var abc = item.indexOf('>');
-	
-						if (abc==-1){
-							var temp = item.split('+');
-	
-							newBro.splice(i,1);
-	
-							temp.forEach(el => {
-								newBro.push(el);
-							});
-						}
-					  });
-	
-					if (regex!=null){
-	
-						bro.splice(1,1);
-	
-						var positiveArr = newBro.filter(function(arg) {
-							return arg != "";
-						});
-	
-						positiveArr.forEach(element => {
-							bro.push(element);
-						});
-					}
-
-				}
-
-				bro.forEach(element => {
-					parseForTree(element,url,hyphen);
-				});
 			}
+
+			bro.forEach(element => {
+				parseForTree(element,path,hyphen);
+			});
 		}
 	}
 }
 
 // var regex = /[\]\+]*[\+][\[]|[\]][\+]|[\]]|[\[]/ig;
-// var regex = /[\[]|[\]]/ig;
 
 // parseForTree('b>b1+b2>b21>b211>b2222>b33>b85+b213+b787');
 // parseForTree('b1>b3+b4+b5>b6+b21+b22+b23>b33');
@@ -291,10 +286,7 @@ function parseForTree(name, url = '',hyphen = ''){
 // parseForTree('b2>b21+(b22>b211+(b212>b2121+b2122)+b23)+b5+(b3>b31+b32)+b4+(b6>b61+(b63>b631+b632)+b62)');
 
 parseForTree(blockNameFromCli);
-
-
-
-console.log(urls);
+console.log(paths);
 
 // If the user pass the name of the block in the command-line options
 // that create a block. Otherwise - activates interactive mode
@@ -312,11 +304,11 @@ else {
 }
 
 function createAnotherFiles(){
-	urls.forEach(function(item, i, arr) {
+	paths.forEach(function(item, i, arr) {
 		dir = BLOCKS_DIR + item;
 
-		var nam = item.split('/');
-		initMakeBlock(nam[nam.length-1]).catch(printErrorMessage);
+		var name = item.split('/');
+		initMakeBlock(name[name.length-1]).catch(printErrorMessage);
 	});
 }
 
