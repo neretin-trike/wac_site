@@ -185,18 +185,20 @@ function splitForDescendants(remain,bro){
 	var regex = /[\]][\+]|[\[]|[\]]/ig;
 	var newBro = remain.split(regex);
 
-	if (regex!=null){
+	if (newBro.length != 0){
 
 		newBro.forEach(function(item, i) {
 			if (item.indexOf('>') == -1){
 	
 				var temp = item.split('+');
 	
-				newBro.splice(i,1);
+				if (temp.length != 1){
+					newBro.splice(i,1);
 	
-				temp.forEach(el => {
-					newBro.push(el);
-				});
+					temp.forEach(el => {
+						newBro.push(el);
+					});
+				}
 			}
 		});
 
@@ -220,7 +222,8 @@ function parseForTree(name, path = '',hyphen = ''){
 	var posAncestor = name.indexOf('>');
 	var posDescendant = name.indexOf('+');
 
-	if ( ((posAncestor!= -1) && (posAncestor < posDescendant))  || (posDescendant ==-1)){
+	if ( ((posAncestor!= -1) && (posAncestor < posDescendant) && (name.search('[\(]|[\)]') == -1) )  
+		 || (posDescendant ==-1)){
 
 		var roots = name.slice(0,posAncestor);
 		var remain = name.slice(posAncestor+1, name.length);
@@ -248,19 +251,26 @@ function parseForTree(name, path = '',hyphen = ''){
 	else{
 		if (posDescendant != -1){
 
-			if (posAncestor == -1){
-				bro = name.split('+');
+			if (name[0]=='('){
+				name = replaceBrackets(name);	
+				bro = splitForDescendants(name,bro);				
 			}
 			else{
-				var roots = name.slice(0,posDescendant);
-				var remain = name.slice(posDescendant+1, name.length);
+				if (posAncestor == -1){
 
-				bro[0] = roots;
-				bro[1] = remain;
-
-				if( remain.search('[\(]|[\)]') != -1 ){
-					remain = replaceBrackets(remain);	
-					bro = splitForDescendants(remain,bro);				
+					bro = name.split('+');
+				}
+				else{
+					var roots = name.slice(0,posDescendant);
+					var remain = name.slice(posDescendant+1, name.length);
+	
+					bro[0] = roots;
+					bro[1] = remain;
+	
+					if( remain.search('[\(]|[\)]') != -1 ){
+						remain = replaceBrackets(remain);	
+						bro = splitForDescendants(remain,bro);				
+					}
 				}
 			}
 
@@ -285,8 +295,11 @@ function parseForTree(name, path = '',hyphen = ''){
 // parseForTree('b2>b21+(b22>b211+(b212>b2121+b2122)+b23)+b5');
 // parseForTree('b2>b21+(b22>b211+(b212>b2121+b2122)+b23)+b5+(b3>b31+b32)+b4+(b6>b61+(b63>b631+b632)+b62)');
 
-parseForTree(blockNameFromCli);
+// parseForTree('header+(main>home+about)+footer')
+// parseForTree('(b1+b2)+(b3+b4)')
+
 console.log(paths);
+
 
 // If the user pass the name of the block in the command-line options
 // that create a block. Otherwise - activates interactive mode
